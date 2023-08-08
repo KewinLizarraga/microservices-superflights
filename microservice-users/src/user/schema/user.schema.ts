@@ -1,15 +1,13 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 
 export const UserSchema = new mongoose.Schema(
   {
-    name: { type: String, unique: true },
-    username: { type: String, unique: true },
-    email: { type: String, unique: true },
-    password: { type: String, unique: true },
+    name: { type: String, required: true },
+    username: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
   },
-  {
-    timestamps: true,
-  },
+  { timestamps: true },
 );
 
 UserSchema.index({ username: 1 }, { unique: true });
