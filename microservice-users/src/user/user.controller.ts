@@ -16,12 +16,12 @@ export class UserController {
 
   @MessagePattern(UserMsg.FIND_ALL)
   findAll() {
-    return this.userService.findAll();
+    return this.userService.getAll();
   }
 
   @MessagePattern(UserMsg.FIND_ONE)
   findOne(@Payload() id: string) {
-    return this.userService.findOne(id);
+    return this.userService.getOne(id);
   }
   @MessagePattern(UserMsg.UPDATE)
   update(@Payload() payload: any) {
@@ -30,7 +30,7 @@ export class UserController {
 
   @MessagePattern(UserMsg.DELETE)
   delete(@Payload() id: string) {
-    return this.userService.delete(id);
+    return this.userService.remove(id);
   }
 
   @MessagePattern(UserMsg.VALID_USER)
