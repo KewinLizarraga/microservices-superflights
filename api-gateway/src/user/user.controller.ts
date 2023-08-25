@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -14,8 +15,10 @@ import { ClientProxySuperFlights } from '../common/proxy/client-proxy';
 import { UserDTO } from './dto/user.dto';
 import { IUser } from '../common/interfaces/user.interface';
 import { UserMSG } from '../common/constants';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @ApiTags('users')
+@UseGuards(JwtAuthGuard)
 @Controller('api/v2/user')
 export class UserController {
   constructor(private readonly clientProxy: ClientProxySuperFlights) {}
